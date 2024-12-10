@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="px-4 py-3 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="static/Fellowship.jpg" alt="" width="250" height="250">
+    <h1 class="display-5 fw-bold text-body-emphasis">Lord of the Rings</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Type the name of a character, and we will present you their info and quotes.</p>
+        <form action="{{ url_for('home') }}" method="post" class="form-example">
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <input type="text" id="name" name="name" class="form-control" />
+                <button type="submit" class="btn btn-dark btn-lg px-4 gap-3">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes text-center" style="list-style-type: none; color: red; padding: 0;">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}

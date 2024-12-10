@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ character["name"] }} info{% endblock %}
+
+{% block content %}
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-end py-3 mb-4 border-bottom bg-white">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a href="{{ url_for('home') }}" class="nav-link bg-dark text-white" aria-current="page">Home</a>
+            </li>
+        </ul>
+    </header>
+</div>
+
+<div class="px-4 py-3 my-5 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">{{ character["name"] }}</h1>
+    <div class="col-lg-6 mx-auto">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Race:</strong> {{ character["race"] }}</li>
+            <li class="list-group-item"><strong>Gender:</strong> {{ character["gender"] }}</li>
+            <li class="list-group-item"><strong>Realm:</strong> {{ character["realm"] }}</li>
+            <li class="list-group-item"><strong>Spouse:</strong> {{ character["spouse"] }}</li>
+            <li class="list-group-item"><strong>Quotes below:</strong></li>
+            {% for quote in character["quotes"] %}
+              <li class="list-group-item">{{ quote }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
